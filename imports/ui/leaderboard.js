@@ -9,6 +9,7 @@ export const Leaderboard = () => {
   const { players, isLoading } = useTracker(() => {
     const subscription = Meteor.subscribe("all.players");
     const players = Players.find({}, { sort: { score: -1 } }).fetch();
+    console.log("tracker run");
     return {
       players,
       isLoading: !subscription.ready(),

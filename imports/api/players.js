@@ -38,7 +38,6 @@ if (Meteor.isServer) {
 
       //publish the collection as you used to do with Mongo.Collection
       Meteor.publish("all.players", function () {
-        // console.log("all.players", Players, Dudes);
         return Players.find();
       });
     });
