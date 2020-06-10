@@ -1,23 +1,21 @@
 import React from "react";
 import "./main.css";
 
-const ScoreItem = ({ item }) => {
+const ScoreItem = ({ item, adjust, remove }) => {
   const [active, setActive] = React.useState(false);
   const [score, setScore] = React.useState(item.score);
 
   const onClick = (item) => {
     setActive(!active);
   };
-  const increment = () => {
-    //   incrementScore(this.props.item.id);
-    //   // Latency compensation
-    //   this.setState({ score: (this.state.score || this.props.item.score) + 1 });
+  const increment = (id) => {
+    adjust(id, 1);
   };
-  const remove = () => {
-    //   deletePlayer(item.id);
-    //   // Latency compensation
-    //   setDeleted: true ;
-  };
+  // const remove = () => {
+  //   //   deletePlayer(item.id);
+  //   //   // Latency compensation
+  //   //   setDeleted: true ;
+  // };
   // getInitialState: function () {
   //   return {
   //     score: null,
@@ -35,10 +33,10 @@ const ScoreItem = ({ item }) => {
   return (
     <li onClick={onClick} className={className}>
       <span className="name">{item.name}</span>
-      <span className="increment control" onClick={increment}>
+      <span className="increment control" onClick={() => increment(item.id)}>
         <span>Increment Score</span>
       </span>
-      <span className="delete control" onClick={remove}>
+      <span className="delete control" onClick={() => remove(item.id)}>
         ×
       </span>
       <span className="score">{item.score}</span>
