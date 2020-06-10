@@ -1,10 +1,8 @@
 import { Mongo } from "meteor/mongo";
 import React from "react";
 import { useTracker } from "meteor/react-meteor-data";
-// import { Players } from "../api/players";
-import ScoreItem from "./ScoreItem";
-
-const Players = new Mongo.Collection("players");
+import Players from "../api/players";
+import Row from "./row";
 
 export const Leaderboard = () => {
   const [name, setName] = React.useState("");
@@ -40,7 +38,7 @@ export const Leaderboard = () => {
     <div className="score">
       <ol className="score-list">
         {players.map((player) => (
-          <ScoreItem
+          <Row
             key={player.id}
             item={player}
             adjust={adjustScore}
@@ -54,7 +52,11 @@ export const Leaderboard = () => {
           return insert(e);
         }}
       >
-        <input onChange={changeName} placeholder="New player's name..." />
+        <input
+          value={name}
+          onChange={changeName}
+          placeholder="New player's name..."
+        />
         <button type="submit">Add</button>
       </form>
     </div>
