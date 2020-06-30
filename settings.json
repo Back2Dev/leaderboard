@@ -3,8 +3,8 @@
   "private": {
     "mysql": {
       "host": "localhost",
-      "user": "mikkel",
-      "password": "password",
+      "user": "root",
+      "password": "",
       "database": "leaderboard",
       "serverId": 129,
       "minInterval": 200,
